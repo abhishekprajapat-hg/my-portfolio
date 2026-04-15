@@ -733,7 +733,7 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <p>&copy; {year} Abhishek</p>
+          <p>&copy; {year} Abhishek Prajapat</p>
         </div>
       </footer>
     </div>
