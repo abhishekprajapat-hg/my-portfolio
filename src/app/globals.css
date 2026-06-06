@@ -1075,16 +1075,22 @@ select {
 
 .project-type {
   display: inline-flex;
-  width: fit-content;
-  padding: 0.28rem 0.66rem;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 15rem);
+  max-width: 100%;
+  min-height: 2.4rem;
+  padding: 0.42rem 0.85rem;
   border-radius: 9999px;
-  border: 1px solid rgb(var(--project-accent) / 42%);
-  background: rgb(var(--project-accent) / 12%);
+  border: 1px solid rgb(111 143 196 / 62%);
+  background: rgb(44 70 112 / 34%);
   color: #dff2ff;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   font-family: var(--font-jetbrains-mono), monospace;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .project-card h3 {
@@ -1109,6 +1115,7 @@ select {
   margin-top: 1.15rem;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 0.5rem;
 }
 
@@ -1134,6 +1141,10 @@ select {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.55rem;
+}
+
+.project-links a:only-child {
+  grid-column: 1 / -1;
 }
 
 .project-links a {

@@ -63,6 +63,22 @@ const projects = [
     repoUrl: "https://github.com/abhishekprajapat-hg/Nemnidhi",
     liveUrl: "https://nemnidhi.com",
   },
+  {
+    type: "Lead Capture Platform",
+    name: "The Office On Rent Contact",
+    summary:
+      "A focused contact experience for office-rental inquiries with clear conversion paths and streamlined lead capture.",
+    stack: ["Next.js", "TypeScript", "Lead Forms"],
+    liveUrl: "https://contact.theofficeonrent.com",
+  },
+  {
+    type: "Event Planning App",
+    name: "Sample Event Planner",
+    summary:
+      "A polished event-planning sample app for organizing event details, showcasing packages, and guiding user inquiries.",
+    stack: ["Next.js", "Vercel", "Responsive UI"],
+    liveUrl: "https://sample-event-planner.vercel.app",
+  },
 ];
 
 const services = [
@@ -589,9 +605,11 @@ export default function Home() {
                     <a href={project.liveUrl} target="_blank" rel="noreferrer">
                       Live Site
                     </a>
-                    <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
+                    {"repoUrl" in project ? (
+                      <a href={project.repoUrl} target="_blank" rel="noreferrer">
+                        GitHub
+                      </a>
+                    ) : null}
                   </div>
                 </article>
               ))}
