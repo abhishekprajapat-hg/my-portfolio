@@ -3,6 +3,11 @@
 import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { SiReact, SiNextdotjs, SiPostgresql, SiTypescript, SiPrisma, SiDocker, SiVercel, SiGithubactions } from "react-icons/si";
+import { TbApi } from "react-icons/tb";
+import { FaRobot, FaRocket } from "react-icons/fa";
+import { VscCode } from "react-icons/vsc";
+import { projects } from "@/lib/projects";
 
 const sectionIds = ["about", "work", "services", "skills", "contact"] as const;
 type SectionId = (typeof sectionIds)[number];
@@ -15,70 +20,6 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
-];
-
-const projects = [
-  {
-    type: "E-commerce Platform",
-    name: "Nemnidhi E-commerce Website",
-    summary:
-      "A commerce storefront for Glam with curated product listings and a customer-first shopping experience.",
-    stack: ["React", "Node.js", "MongoDB"],
-    repoUrl: "https://github.com/abhishekprajapat-hg/Nemnidhi-E-commerce-webiste",
-    liveUrl: "https://glam.nemnidhi.com",
-  },
-  {
-    type: "EdTech Platform",
-    name: "Finedge Academy",
-    summary:
-      "An academy platform focused on learning journeys, program details, and high-conversion enrollment pages.",
-    stack: ["Next.js", "TypeScript", "Modern UI"],
-    repoUrl: "https://github.com/abhishekprajapat-hg/finedge-academy",
-    liveUrl: "https://finedge.nemnidhi.com",
-  },
-  {
-    type: "Cloud Product",
-    name: "Samvid OS",
-    summary:
-      "A product site for Samvid OS built to communicate platform value, trust, and onboarding clarity.",
-    stack: ["Next.js", "API Integrations", "Cloud Deployment"],
-    repoUrl: "https://github.com/abhishekprajapat-hg/Samvid-os",
-    liveUrl: "https://nemnidhi.cloud",
-  },
-  {
-    type: "Business Platform",
-    name: "JMMS",
-    summary:
-      "A web platform for JMMS with structured information flow and streamlined user-facing experiences.",
-    stack: ["React", "Node.js", "PostgreSQL"],
-    repoUrl: "https://github.com/abhishekprajapat-hg/JMMS",
-    liveUrl: "https://nemnidhi.tech",
-  },
-  {
-    type: "Corporate Website",
-    name: "Nemnidhi",
-    summary:
-      "The official Nemnidhi website built for brand presence, service discovery, and lead generation.",
-    stack: ["Next.js", "TypeScript", "SEO"],
-    repoUrl: "https://github.com/abhishekprajapat-hg/Nemnidhi",
-    liveUrl: "https://nemnidhi.com",
-  },
-  {
-    type: "Lead Capture Platform",
-    name: "The Office On Rent Contact",
-    summary:
-      "A focused contact experience for office-rental inquiries with clear conversion paths and streamlined lead capture.",
-    stack: ["Next.js", "TypeScript", "Lead Forms"],
-    liveUrl: "https://contact.theofficeonrent.com",
-  },
-  {
-    type: "Event Planning App",
-    name: "Sample Event Planner",
-    summary:
-      "A polished event-planning sample app for organizing event details, showcasing packages, and guiding user inquiries.",
-    stack: ["Next.js", "Vercel", "Responsive UI"],
-    liveUrl: "https://sample-event-planner.vercel.app",
-  },
 ];
 
 const services = [
@@ -117,19 +58,49 @@ const services = [
   },
 ];
 
-const skills = [
-  "MERN",
-  "Next.js",
-  "PostgreSQL",
-  "TypeScript",
-  "Prisma",
-  "REST APIs",
-  "Docker",
-  "Vercel",
-  "CI/CD",
-  "AI APIs",
-  "Prompt Engineering",
-  "Deployment",
+const skillGroups = [
+  {
+    title: "Frontend Engineering",
+    summary: "Fast, responsive interfaces with clean component systems and polished user journeys.",
+    accent: "125 151 190",
+    tools: [
+      { label: "React", icon: <SiReact /> },
+      { label: "Next.js", icon: <SiNextdotjs /> },
+      { label: "TypeScript", icon: <SiTypescript /> },
+    ],
+    points: ["Responsive UI", "SEO-ready pages", "Performance tuning"],
+  },
+  {
+    title: "Backend & Data",
+    summary: "Reliable APIs, database modeling, and integrations that support real product workflows.",
+    accent: "125 151 190",
+    tools: [
+      { label: "REST APIs", icon: <TbApi /> },
+      { label: "PostgreSQL", icon: <SiPostgresql /> },
+      { label: "Prisma", icon: <SiPrisma /> },
+    ],
+    points: ["API architecture", "Database design", "Secure data flows"],
+  },
+  {
+    title: "Launch & Automation",
+    summary: "Production deployments, automation pipelines, and AI-assisted features for faster delivery.",
+    accent: "125 151 190",
+    tools: [
+      { label: "Docker", icon: <SiDocker /> },
+      { label: "Vercel", icon: <SiVercel /> },
+      { label: "CI/CD", icon: <SiGithubactions /> },
+      { label: "AI APIs", icon: <FaRobot /> },
+      { label: "Prompts", icon: <VscCode /> },
+      { label: "Deployment", icon: <FaRocket /> },
+    ],
+    points: ["Cloud deployment", "Workflow automation", "AI integrations"],
+  },
+];
+
+const skillHighlights = [
+  { value: "MERN", label: "Full-stack apps" },
+  { value: "Next", label: "Modern web builds" },
+  { value: "AI", label: "Smart integrations" },
 ];
 
 const aboutSlides = [
@@ -472,6 +443,16 @@ export default function Home() {
       <main id="home">
         <section className="hero-section" aria-labelledby="hero-heading">
           <div className="hero-grid-bg" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
+          <div className="hero-code-card hero-code-card-left reveal" aria-hidden="true" style={{ animationDelay: "180ms" }}>
+            <span>build.status</span>
+            <strong>production-ready</strong>
+          </div>
+          <div className="hero-code-card hero-code-card-right reveal" aria-hidden="true" style={{ animationDelay: "240ms" }}>
+            <span>stack.output</span>
+            <strong>MERN / Next / AI</strong>
+          </div>
           <p className="hero-floating hero-floating-left reveal" style={{ animationDelay: "260ms" }}>
             MERN + Next.js
           </p>
@@ -494,24 +475,31 @@ export default function Home() {
             </p>
             <div className="hero-actions reveal" style={{ animationDelay: "220ms" }}>
               <a href="#work" className="btn-main primary">
-                View Work
+                View Projects
               </a>
               <a href="#contact" className="btn-main ghost">
-                Hit Me Up
+                Start a Build
               </a>
+            </div>
+            <div className="hero-stack-strip reveal" style={{ animationDelay: "260ms" }} aria-label="Core stack">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>PostgreSQL</span>
+              <span>AI APIs</span>
+              <span>Vercel</span>
             </div>
             <div className="hero-metrics reveal" style={{ animationDelay: "300ms" }}>
               <article>
-                <strong>MERN</strong>
-                <span>Modern full-stack workflow</span>
+                <strong>7+</strong>
+                <span>Live project builds</span>
               </article>
               <article>
-                <strong>API</strong>
-                <span>Scalable backend foundations</span>
+                <strong>Full</strong>
+                <span>Frontend to deployment</span>
               </article>
               <article>
-                <strong>UX</strong>
-                <span>Responsive conversion-focused UI</span>
+                <strong>Fast</strong>
+                <span>Clean, responsive delivery</span>
               </article>
             </div>
           </div>
@@ -593,6 +581,14 @@ export default function Home() {
                     } as CSSProperties
                   }
                 >
+                  <div className="project-image">
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} project preview`}
+                      fill
+                      sizes="(min-width: 100rem) 30vw, (min-width: 62rem) 44vw, 92vw"
+                    />
+                  </div>
                   <p className="project-type">{project.type}</p>
                   <h3>{project.name}</h3>
                   <p>{project.summary}</p>
@@ -602,11 +598,19 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="project-links">
-                    <a href={project.liveUrl} target="_blank" rel="noreferrer">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Live Site
                     </a>
                     {"repoUrl" in project ? (
-                      <a href={project.repoUrl} target="_blank" rel="noreferrer">
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         GitHub
                       </a>
                     ) : null}
@@ -664,13 +668,58 @@ export default function Home() {
               <h2 className="section-title reveal" style={{ animationDelay: "80ms" }}>
                 Tech stack I use to ship products
               </h2>
+              <p className="section-copy reveal skill-intro" style={{ animationDelay: "120ms" }}>
+                I combine frontend polish, backend structure, deployment discipline, and AI workflows to move
+                projects from idea to production without losing speed.
+              </p>
             </div>
 
-            <div className="chips-wrap">
-              {skills.map((skill, index) => (
-                <span key={skill} className="chip reveal" style={{ animationDelay: `${120 + index * 20}ms` }}>
-                  {skill}
-                </span>
+            <div className="skills-showcase">
+              {skillGroups.map((group, index) => (
+                <article
+                  key={group.title}
+                  className="surface-card spotlight-card reveal skill-card"
+                  onMouseMove={handleSpotlightMove}
+                  onMouseLeave={handleSpotlightLeave}
+                  style={
+                    {
+                      animationDelay: `${150 + index * 80}ms`,
+                      "--spot-x": "50%",
+                      "--spot-y": "50%",
+                      "--skill-accent": group.accent,
+                    } as CSSProperties
+                  }
+                >
+                  <div className="skill-card-top">
+                    <span className="skill-index">0{index + 1}</span>
+                    <h3>{group.title}</h3>
+                  </div>
+                  <p>{group.summary}</p>
+                  <div className="skill-tool-list" aria-label={`${group.title} tools`}>
+                    {group.tools.map((skill) => (
+                      <span key={skill.label} className="chip" title={skill.label}>
+                        <span className="chip-icon" aria-hidden="true">
+                          {skill.icon}
+                        </span>
+                        <span>{skill.label}</span>
+                      </span>
+                    ))}
+                  </div>
+                  <ul className="skill-points">
+                    {group.points.map((point) => (
+                      <li key={`${group.title}-${point}`}>{point}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            <div className="skill-highlights reveal" style={{ animationDelay: "430ms" }}>
+              {skillHighlights.map((highlight) => (
+                <article key={highlight.label}>
+                  <strong>{highlight.value}</strong>
+                  <span>{highlight.label}</span>
+                </article>
               ))}
             </div>
           </div>

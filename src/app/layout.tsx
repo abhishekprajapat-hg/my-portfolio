@@ -117,7 +117,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetBrainsMono.variable} antialiased`}>
         <script
           type="application/ld+json"
